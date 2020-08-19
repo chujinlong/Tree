@@ -88,7 +88,5 @@ public class Recursion {
 //        System.out.println("阶乘：" + sum2);
 //        recursion.getDir("/Users/chujinlong/apache-maven-3.6.2");
         recursion.move(5, "柱子A", "柱子B", "柱子C");
-
-        List<Integer> list = new ArrayList<Integer>();
     }
 }

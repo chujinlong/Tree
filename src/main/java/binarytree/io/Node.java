@@ -17,6 +17,10 @@ public class Node {
 
     private Node rightNode;
 
+    public Node() {
+
+    }
+
     public Node(int data, Node leftNode, Node rightNode) {
         this.data = data;
         this.leftNode = leftNode;

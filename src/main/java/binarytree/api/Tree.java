@@ -23,7 +23,7 @@ public interface Tree {
      *
      * @return
      */
-    public int getHeight();
+    public int getMaxHeight(Node root);
 
     /**
      * 前序（递归算法）
@@ -59,5 +59,6 @@ public interface Tree {
      * 后序（栈，非递归）
      */
     public List<Integer> postTraByStack(Node root);
+
 
 }

@@ -23,7 +23,7 @@ public class BinaryTree implements Tree {
     private static final List<Integer> list2 = new ArrayList<>();
     private static final List<Integer> list3 = new ArrayList<>();
 
-    public static Node init() {
+    public static Node init1() {
         Node J = new Node(8, null, null);
         Node H = new Node(4, null, null);
         Node G = new Node(2, null, null);
@@ -34,6 +34,14 @@ public class BinaryTree implements Tree {
         Node B = new Node(3, D, E);
         Node A = new Node(6, B, C);
         return A;//返回根结点
+    }
+
+    public static Node init2() {
+        Node D = new Node(4, null, null);
+        Node C = new Node(3, null, D);
+        Node B = new Node(1, null, null);
+        Node A = new Node(2, B, C);
+        return A;
     }
 
     public static void printRootNode(Node node) {
@@ -52,8 +60,29 @@ public class BinaryTree implements Tree {
     }
 
     @Override
-    public int getHeight() {
-        return 0;
+    public int getMaxHeight(Node root) {
+        if (root == null) {
+            return 0;
+        } else {
+            int left = getMaxHeight(root.getLeftNode()) + 1;
+            int right = getMaxHeight(root.getRightNode()) + 1;
+            return Math.max(left, right);
+        }
+    }
+
+    public int getMinHeight(Node root) {
+        int result = 0;
+        if (root == null) {
+            return result;
+        }
+        int depth1 = getMinHeight(root.getLeftNode()) + 1;
+        int depth2 = getMinHeight(root.getRightNode()) + 1;
+        if (root.getLeftNode() != null && root.getRightNode() != null) {
+            result = Math.min(depth1, depth2);
+        } else {
+            result = Math.max(depth1, depth2);
+        }
+        return result;
     }
 
     /**
@@ -125,11 +154,11 @@ public class BinaryTree implements Tree {
         Queue<Node> queue = new LinkedList<>();
         queue.offer(root);
         while (!queue.isEmpty()) {
+            ArrayList<Integer> levelList = new ArrayList<>();
             int size = queue.size();
-            ArrayList<Integer> level = new ArrayList<>();
             for (int i = 0; i < size; i++) {
                 Node node = queue.poll();
-                level.add(node.getData());
+                levelList.add(node.getData());
                 if (node.getLeftNode() != null) {
                     queue.offer(node.getLeftNode());
                 }
@@ -137,10 +166,11 @@ public class BinaryTree implements Tree {
                     queue.offer(node.getRightNode());
                 }
             }
-            result.add(level);
+            result.add(levelList);
         }
         return result;
     }
+
 
     @Override
     public List<Integer> preTraByStack(Node root) {
@@ -157,4 +187,21 @@ public class BinaryTree implements Tree {
         return null;
     }
 
+    public Node generatorTree(int size, List<String> data) {
+        char[] content = {'A', 'B', '#', 'D', '#', '#', 'C', '#', '#'};
+        Node node;
+        String d = data.get(0);
+        int index = size - data.size();
+        if (d.equals("#")) {
+            node = null;
+            data.remove(0);
+            return node;
+        }
+        return null;
+    }
+
+    public static void main(String[] args) {
+        BinaryTree tree = new BinaryTree();
+        System.out.println(tree.getMinHeight(init1()));
+    }
 }
