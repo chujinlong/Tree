@@ -132,6 +132,7 @@ public class AVLTree {
         }
     }
 
+//
     public static void main(String[] args) {
         int arr[] = {10, 11, 7, 6, 8, 9};
         //创建一个AvlTree对象
@@ -148,10 +149,4 @@ public class AVLTree {
         System.out.println("树的高度:" + avlTree.getRoot().height());
         System.out.println("树的左子树高度:" + avlTree.getRoot().leftHeight());
         System.out.println("树的右子树高度:" + avlTree.getRoot().rightHeight());
-        System.out.println("当前根结点:" + avlTree.getRoot());
-        System.out.println("根结点的左子结点:" + avlTree.getRoot().getLeftNode());
-        System.out.println("查找结点：" + avlTree.search(8));
-        avlTree.delNode(11);
-        System.out.println("删除结点10后的AVL树：" + JSON.toJSONString(avlTree));
-    }
-}
+        System.out.println("当前根结点
